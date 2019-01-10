@@ -1,10 +1,10 @@
-class api::v1::PostsController < ApplcationController
+class Api::V1::PostsController < ApplicationController
     def index
-        @posts = Posts.all
+        @posts = Post.all
         render json: @posts
     end
 
-    
+
 
     private
 
