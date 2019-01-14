@@ -6,8 +6,12 @@ class Api::V1::PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-        render json: @post
-    end
+        if @post.save 
+            render json: @post, status: 200
+        else
+            render json: {message: comment.errors}, status: 400    
+        end
+    end    
 
     def update
         @post = Post.find(params[:id])
@@ -15,10 +19,16 @@ class Api::V1::PostsController < ApplicationController
         render json: @post
     end
 
+    def show 
+        @post = Post.find(params[:id])
+        render json: @post
+    end
+
+
     private
 
        def post_params
-            params_require(:post).permit(:title, :body)
+            params.require(:post).permit(:title, :body)
        end
 
 end

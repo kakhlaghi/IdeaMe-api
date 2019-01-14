@@ -1,9 +1,9 @@
 class Api::V1::CommentsController < ApplicationController
 
     def create
-            comment = Comment.new(comment_params)
+        comment = Comment.new(comment_params)
         if comment.save
-            render json: respnse, status: 200
+            render json: response, status: 200
         else
             render json: {message: comment.errors}, status: 400
             
@@ -15,7 +15,7 @@ class Api::V1::CommentsController < ApplicationController
     private
 
     def comment_params
-        params_require(:comment).permit(:comment_body, :post_id)
+        params.require(:comment).permit(:comment_body, :post_id)
     end
 
 end
