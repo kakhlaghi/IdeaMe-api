@@ -5,11 +5,11 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-#Rails.application.config.middleware.insert_before 0, Rack::Cors do
- #  allow do
-  #   origins 'localhost:3001', 'https://ideame.herokuapp.com'
- #    resource '*',
-  #     headers: :any,
-   #    methods: [:get, :post, :put, :patch, :delete]
-   #end
- #end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+   allow do
+     origins 'localhost:3001', 'https://ideameapp.herokuapp.com'
+     resource '*',
+       headers: :any,
+       methods: [:get, :post, :put, :patch, :delete]
+   end
+ end
